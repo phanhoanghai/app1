@@ -34,12 +34,15 @@ TextField {
             Image {
                 id: iconSearch
                 anchors.verticalCenter: parent
-                anchors.left: parent.left
+                x: 7
+                y: 7
                 source: "../../resources/icon-search.png"
                 anchors.leftMargin: 10
                 fillMode: Image.PreserveAspectFit
                 sourceSize.height: 20
                 opacity: 0.5
+                width: 25
+                height: 25
             }
         }
     }
@@ -71,5 +74,4 @@ TextField {
         duration: 500
         easing.type: Easing.OutQuint
     }
-
 }

@@ -2,6 +2,7 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include "data/employeemodel.h"
+#include <mqueue.h>
 
 int main(int argc, char *argv[])
 {
