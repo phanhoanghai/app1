@@ -10,6 +10,11 @@ ApplicationWindow {
     height: 700
     visible: true
 
+    Pane {
+        anchors.fill: parent
+        focusPolicy: Qt.ClickFocus
+    }
+
     Rectangle {
         id: employeeInfo
         anchors.top: parent.top

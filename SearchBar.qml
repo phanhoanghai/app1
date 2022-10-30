@@ -20,11 +20,12 @@ TextField {
 
     style: TextFieldStyle {
         selectedTextColor: "#FFFFFF"
-        selectionColor: "#ff007f"
+        selectionColor: colorBorderOnFocus
         placeholderTextColor: "#81848c"
+
         Rectangle {
             id: bgColor
-            color: colorDefault
+            color: "red"
             radius: 8
             border.color: colorDefault
             border.width: 2
@@ -45,11 +46,28 @@ TextField {
 
     onFocusChanged: {
         if (textField.focus) {
-            textField.width = 300
+            textOnFocus.running = true
         } else {
-            textField.width = 40
+            textLostFocus.running = true
         }
     }
 
+    PropertyAnimation {
+        id: textOnFocus
+        target: textField
+        properties: "width"
+        to: 300
+        duration: 500
+        easing.type: Easing.OutQuint
+    }
+
+    PropertyAnimation {
+        id: textLostFocus
+        target: textField
+        properties: "width"
+        to: 40
+        duration: 500
+        easing.type: Easing.OutQuint
+    }
 
 }
