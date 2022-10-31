@@ -6,25 +6,26 @@ TextField {
     width: 40
     implicitHeight: 40
 
-    property color colorDefault: "#282c34"
+    property color colorDefault: "#ffffff"
     property color colorOnfocus: "#202225"
     property color colorMouseOver: "#2B2f38"
     property color colorBorderOnFocus: "#ff007f"
+    property color colorDarkTheme: "#303030"
 
     placeholderText: qsTr("Search by ...")
-//    color: "#ffffff"
+    color: "#372b25"
     font.family: "Segoe UI"
     font.pointSize: 10
     clip: true
     leftPadding: 42
     rightPadding: 35
     selectByMouse: true
-//    selectedTextColor: "#FFFFFF"
     selectionColor: colorBorderOnFocus
-    placeholderTextColor: "#81848c"
+    placeholderTextColor: "#000000"
 
     background: Rectangle {
         Rectangle {
+            anchors.fill: parent
             id: bgColor
             color: colorDefault
             radius: 8
@@ -33,7 +34,6 @@ TextField {
 
             Image {
                 id: iconSearch
-                anchors.verticalCenter: parent
                 x: 7
                 y: 7
                 source: "../../resources/icon-search.png"
@@ -52,8 +52,10 @@ TextField {
             textOnFocus.running = true
              textField.placeholderText = "Search by ..."
         } else {
+            if (!textField.displayText) {
             textLostFocus.running = true
             textField.placeholderText = ""
+            }
         }
     }
 
@@ -61,7 +63,7 @@ TextField {
         id: textOnFocus
         target: textField
         properties: "width"
-        to: 300
+        to: 400
         duration: 500
         easing.type: Easing.OutQuint
     }

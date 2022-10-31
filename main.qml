@@ -15,12 +15,22 @@ ApplicationWindow {
         focusPolicy: Qt.ClickFocus
     }
 
-    Rectangle {
+    Label {
+        id: employeeNameLabel
+        width: parent.width
+        height: 30
+        font.pixelSize: Qt.application.font.pixelSize * 1.2
+        text: myModel.name
+        anchors.horizontalCenter: parent
+        font.bold: true
+    }
+
+    Item {
         id: employeeInfo
-        anchors.top: parent.top
+        anchors.top: employeeNameLabel.bottom
         width: parent.width
         height: 300
-        border.color: "blue"
+//        border.color: "blue"
     }
 
     SearchBar {
@@ -31,12 +41,44 @@ ApplicationWindow {
         anchors.horizontalCenter: parent.horizontalCenter
     }
 
-    ListView {
-        id: listEmployee
-        width: parent.width
+    Item {
+        id: listEmployeeInfo
+        height: 350
+        width: 400
         anchors.top: searchBar.bottom
-        height: 300
-        model: myModel
-        delegate: EmpoyeeDelegate {}
+
+        Item {
+            id: listLabel
+            anchors.top: parent.top
+            x: 50
+            width: 400
+            height: 30
+
+            Label {
+                id: nameLabel
+                font.pixelSize: Qt.application.font.pixelSize * 1.2
+                text: "Name"
+                x: 50
+                font.bold: true
+            }
+
+            Label {
+                id: averageLabel
+                font.pixelSize: Qt.application.font.pixelSize * 1.2
+                text: "Average"
+                x: 300
+                font.bold: true
+            }
+        }
+
+        ListView {
+            id: listEmployee
+            anchors.top: listLabel.bottom
+            x: 50
+            height: 320
+            width: 400
+            model: myModel
+            delegate: EmpoyeeDelegate {}
+        }
     }
 }

@@ -13,7 +13,7 @@ public:
 public:
     enum EmployeeRoles {
         NameRole = Qt::UserRole + 1,
-        GraduateRole
+        averageRole
     };
 
 public:

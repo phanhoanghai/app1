@@ -6,15 +6,15 @@
 class Employee
 {
 public:
-    Employee(const QString& name, const QString& graduate);
+    Employee(const QString& name, const QString& average);
 
 public:
     QString name() const;
-    QString graduate() const;
+    QString average() const;
 
 private:
     QString m_name;
-    QString m_graduate;
+    QString m_average;
 };
 
 #endif // EMPLOYEE_H

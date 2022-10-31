@@ -10,5 +10,6 @@
         <file>resources/icon-loading.png</file>
         <file>resources/icon-refresh.png</file>
         <file>resources/icon-search.png</file>
+        <file>Nulo.qml</file>
     </qresource>
 </RCC>

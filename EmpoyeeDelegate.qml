@@ -6,7 +6,7 @@ import QtQuick.Layouts 1.11
 ItemDelegate {
     id: root
     width: parent.width
-    height: 50
+    height: 30
     checkable: true
 
 
@@ -16,7 +16,7 @@ ItemDelegate {
 
         Label {
             id: timeLabel
-            font.pixelSize: Qt.application.font.pixelSize * 1.5
+            font.pixelSize: Qt.application.font.pixelSize
             text: model.name
             Layout.fillWidth: true
             Layout.minimumWidth: 270
@@ -26,19 +26,11 @@ ItemDelegate {
         Label {
             id: dateLabel
             font.pixelSize: Qt.application.font.pixelSize
-            text: model.name
+            text: model.average
             Layout.fillWidth: true
             Layout.minimumWidth: 50
             Layout.leftMargin: 5
-        }
-
-        Label {
-            id: dateLabel1
-            font.pixelSize: Qt.application.font.pixelSize
-            text: model.name
-            Layout.fillWidth: true
-            Layout.minimumWidth: 50
-            Layout.leftMargin: 5
+            color: "#3BC029"
         }
     }
     Item {

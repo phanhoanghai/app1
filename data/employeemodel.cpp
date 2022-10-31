@@ -23,14 +23,14 @@ QVariant EmployeeModel::data(const QModelIndex & index, int role) const {
     const Employee &employee = m_employees[index.row()];
     if (role == NameRole)
         return employee.name();
-    else if (role == GraduateRole)
-        return employee.graduate();
+    else if (role == averageRole)
+        return employee.average();
     return QVariant();
 }
 
 QHash<int, QByteArray> EmployeeModel::roleNames() const {
     QHash<int, QByteArray> roles;
     roles[NameRole] = "name";
-    roles[GraduateRole] = "graduate";
+    roles[averageRole] = "average";
     return roles;
 }
