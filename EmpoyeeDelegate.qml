@@ -9,33 +9,19 @@ ItemDelegate {
     height: 30
     checkable: true
 
-
-    RowLayout {
-        id: dateColumn
-        spacing: 5
-
-        Label {
-            id: timeLabel
-            font.pixelSize: Qt.application.font.pixelSize
-            text: model.name
-            Layout.fillWidth: true
-            Layout.minimumWidth: 270
-            Layout.leftMargin: 50
-        }
-
-        Label {
-            id: dateLabel
-            font.pixelSize: Qt.application.font.pixelSize
-            text: model.average
-            Layout.fillWidth: true
-            Layout.minimumWidth: 50
-            Layout.leftMargin: 5
-            color: "#3BC029"
-        }
-    }
-    Item {
-        Layout.fillWidth: true
+    Label {
+        id: timeLabel
+        font.pixelSize: Qt.application.font.pixelSize
+        text: model.name
+        x: 50
+        Layout.leftMargin: 50
     }
 
-
+    Label {
+        id: dateLabel
+        font.pixelSize: Qt.application.font.pixelSize
+        text: model.average
+        x: 310
+        color: "#3BC029"
+    }
 }

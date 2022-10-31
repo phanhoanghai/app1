@@ -2,7 +2,6 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>EmpoyeeDelegate.qml</file>
-        <file>CBoder.qml</file>
         <file>qtquickcontrols2.conf</file>
         <file>SearchBar.qml</file>
         <file>resources/anonymous.png</file>
@@ -11,5 +10,13 @@
         <file>resources/icon-refresh.png</file>
         <file>resources/icon-search.png</file>
         <file>Nulo.qml</file>
+        <file>SkillInfo.qml</file>
+        <file>resources/check.png</file>
+        <file>resources/cross.png</file>
+        <file>resources/a.png</file>
+        <file>resources/c.png</file>
+        <file>resources/j.png</file>
+        <file>resources/o.png</file>
+        <file>resources/q.png</file>
     </qresource>
 </RCC>

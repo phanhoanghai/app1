@@ -10,10 +10,10 @@ int main(int argc, char *argv[])
 
     QGuiApplication app(argc, argv);
     EmployeeModel model;
-    model.addEmployee(Employee("Phan Hoang Hai", "123"));
-    model.addEmployee(Employee("Phan Hoang Hai", "123"));
-    model.addEmployee(Employee("Phan Hoang Hai", "123"));
-    model.addEmployee(Employee("Phan Hoang Hai", "123"));
+    model.addEmployee(Employee(1, "Phan Hoang Hai", "1.2", 1, 2, 3, 4, 5));
+    model.addEmployee(Employee(2, "Phan Hoang Hai", "2.4", 1, 2, 3, 4, 5));
+    model.addEmployee(Employee(3, "Phan Hoang Hai", "5.6", 1, 2, 3, 4, 5));
+    model.addEmployee(Employee(4, "Phan Hoang Hai", "2.5", 1, 2, 3, 4, 5));
 
     QQmlApplicationEngine engine;
     QQmlContext* ctxt = engine.rootContext();

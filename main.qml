@@ -6,54 +6,113 @@ import QtQuick.Window 2.11
 
 ApplicationWindow {
     id: window
-    width: 500
-    height: 700
+    width: 400
+    height: 550
     visible: true
+    property int currentIndex: 0
+
+    ListModel {
+        id: skillModel
+        ListElement {
+            name: "Assembly"
+            icon: "../../resources/a.png"
+        }
+        ListElement {
+            name: "C++"
+            icon: "../../resources/c.png"
+        }
+        ListElement {
+            name: "java Scripts"
+            icon: "../../resources/j.png"
+        }
+        ListElement {
+            name: "QML"
+            icon: "../../resources/q.png"
+        }
+        ListElement {
+            name: "OpenGL"
+            icon: "../../resources/o.png"
+        }
+    }
 
     Pane {
         anchors.fill: parent
         focusPolicy: Qt.ClickFocus
     }
 
-    Label {
-        id: employeeNameLabel
+    Item {
+        id: employeeInfo
+        anchors.top: parent.top
         width: parent.width
-        height: 30
-        font.pixelSize: Qt.application.font.pixelSize * 1.2
-        text: myModel.name
-        anchors.horizontalCenter: parent
-        font.bold: true
+        height: 230
+
+        Label {
+            id: employeeName
+            anchors.horizontalCenter: parent.horizontalCenter
+            y: 10
+            color: "white"
+            height: 30
+            text: myModel.get(currentIndex).name
+            anchors.horizontalCenterOffset: 0
+            horizontalAlignment: Text.AlignHCenter
+            font.pixelSize: Qt.application.font.pixelSize * 2
+            font.bold: true
+        }
+
+        Item {
+            id: listSkill
+            anchors.top: employeeName.top
+            anchors.topMargin: 50
+            width: parent.width
+            height: 260
+            Column {
+                anchors.horizontalCenter: parent.horizontalCenter
+                Repeater{
+                    model: skillModel
+                    SkillInfo {
+                        skillPoint: getSkillPoint(index)
+                    }
+                }
+            }
+        }
     }
 
     Item {
-        id: employeeInfo
-        anchors.top: employeeNameLabel.bottom
-        width: parent.width
-        height: 300
-//        border.color: "blue"
-    }
-
-    SearchBar {
-        id: searchBar
-        x: 166
-        anchors.top: employeeInfo.bottom
-        anchors.topMargin: 20
+        id: actionItem
+        width: 300
+        height: 40
         anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: employeeInfo.bottom
+
+        SearchBar {
+            id: searchBar
+            anchors.topMargin: 20
+            anchors.left: parent.left
+//            anchors.horizontalCenter: parent.horizontalCenter
+        }
+
+        Rectangle {
+            id: refreshBtn
+            width: 100
+            height: 40
+            border.color: "red"
+            anchors.left: searchBar.right
+            anchors.leftMargin: 20
+        }
     }
 
     Item {
         id: listEmployeeInfo
         height: 350
-        width: 400
-        anchors.top: searchBar.bottom
+        width: 300
+        anchors.top: actionItem.bottom
 
         Item {
             id: listLabel
             anchors.top: parent.top
-            x: 50
-            width: 400
+            width: parent.width
             height: 30
-
+            anchors.horizontalCenter: parent.horizontalCenter
             Label {
                 id: nameLabel
                 font.pixelSize: Qt.application.font.pixelSize * 1.2
@@ -66,7 +125,7 @@ ApplicationWindow {
                 id: averageLabel
                 font.pixelSize: Qt.application.font.pixelSize * 1.2
                 text: "Average"
-                x: 300
+                x: 280
                 font.bold: true
             }
         }
@@ -74,11 +133,31 @@ ApplicationWindow {
         ListView {
             id: listEmployee
             anchors.top: listLabel.bottom
-            x: 50
+            width: parent.width
             height: 320
-            width: 400
+            anchors.horizontalCenter: parent.horizontalCenter
             model: myModel
             delegate: EmpoyeeDelegate {}
+        }
+    }
+
+    function getSkillPoint(index) {
+        switch (index) {
+        case 0 :
+            return myModel.get(currentIndex).assem
+            break
+        case 1:
+            return myModel.get(currentIndex).cplus
+            break
+        case 2:
+            return myModel.get(currentIndex).js
+            break
+        case 3:
+            return myModel.get(currentIndex).qml
+            break
+        case 4:
+            return myModel.get(currentIndex).opengl
+            break
         }
     }
 }

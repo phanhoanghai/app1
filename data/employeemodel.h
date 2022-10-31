@@ -12,15 +12,22 @@ public:
 
 public:
     enum EmployeeRoles {
-        NameRole = Qt::UserRole + 1,
-        averageRole
+        e_index = Qt::UserRole + 1,
+        NameRole,
+        averageRole,
+        assem,
+        cplus,
+        js,
+        qml,
+        openGL
     };
 
 public:
     void addEmployee(const Employee& employee);
-
     int rowCount(const QModelIndex & parent = QModelIndex()) const;
     QVariant data(const QModelIndex & index, int role = Qt::DisplayRole) const;
+
+    Q_INVOKABLE QVariantMap get(int row) const;
 
 protected:
     QHash<int, QByteArray> roleNames() const;

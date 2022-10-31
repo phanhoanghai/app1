@@ -28,3 +28,5 @@ HEADERS += \
     data/employee.h \
     data/employeemodel.h \
     util/AppDefine.h
+
+DISTFILES +=

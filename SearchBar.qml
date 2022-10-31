@@ -63,8 +63,8 @@ TextField {
         id: textOnFocus
         target: textField
         properties: "width"
-        to: 400
-        duration: 500
+        to: 200
+        duration: 300
         easing.type: Easing.OutQuint
     }
 
