@@ -12,7 +12,7 @@ TextField {
     property color colorBorderOnFocus: "#ff007f"
     property color colorDarkTheme: "#303030"
 
-    placeholderText: qsTr("Search by ...")
+    placeholderText: qsTr("Search by name")
     color: "#372b25"
     font.family: "Segoe UI"
     font.pointSize: 10
@@ -50,7 +50,7 @@ TextField {
     onFocusChanged: {
         if (textField.focus) {
             textOnFocus.running = true
-             textField.placeholderText = "Search by ..."
+             textField.placeholderText = "Search by name"
         } else {
             if (!textField.displayText) {
             textLostFocus.running = true

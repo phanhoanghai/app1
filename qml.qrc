@@ -18,5 +18,7 @@
         <file>resources/j.png</file>
         <file>resources/o.png</file>
         <file>resources/q.png</file>
+        <file>resources/rotate-right.png</file>
+        <file>resources/rotate-right.svg</file>
     </qresource>
 </RCC>

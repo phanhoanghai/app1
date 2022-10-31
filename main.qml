@@ -88,14 +88,13 @@ ApplicationWindow {
             id: searchBar
             anchors.topMargin: 20
             anchors.left: parent.left
-//            anchors.horizontalCenter: parent.horizontalCenter
         }
 
-        Rectangle {
+        Button {
             id: refreshBtn
-            width: 100
+            text: "Refresh"
+            width: 80
             height: 40
-            border.color: "red"
             anchors.left: searchBar.right
             anchors.leftMargin: 20
         }
