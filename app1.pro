@@ -9,9 +9,12 @@ CONFIG += c++11
 SOURCES += \
         data/employee.cpp \
         data/employeemodel.cpp \
-        main.cpp
+        main.cpp \
+        serverlistenner/readsharemem.cpp
 
 RESOURCES += qml.qrc
+
+LIBS += -lrt
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
@@ -27,6 +30,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     data/employee.h \
     data/employeemodel.h \
+    serverlistenner/readsharemem.h \
     util/AppDefine.h
 
 DISTFILES +=
