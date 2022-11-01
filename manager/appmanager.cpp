@@ -1,23 +1,19 @@
-#include "appmanager.h"
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
+
+#include "appmanager.h"
 #include "data/employeemodel.h"
-#include <mqueue.h>
-#include <serverlistenner/readsharemem.h>
-#include "util/AppDefine.h"
+#include "serverlistenner/readsharemem.h"
 #include "manager/datamanager.h"
-#include <QString>
-#include <QJsonDocument>
-#include <QJsonValue>
-#include <QJsonObject>
+#include "serverlistenner/msgqueue.h"
+#include "interface/qmlinterface.h"
 
 using namespace std;
 static AppManager* m_instance;
 
 AppManager::AppManager()
 {
-
 }
 
 AppManager *AppManager::getInstance()
@@ -30,14 +26,29 @@ AppManager *AppManager::getInstance()
 
 bool AppManager::initApp(int argc, char *argv[])
 {
-    initData();
-    initView(argc, argv);
+    if (!initData()) {
+        qDebug("Cannot init the data");
+        return false;
+    }
+
+    if (!initView(argc, argv)) {
+        qDebug("Cannot init the view");
+        return false;
+    }
+
+    if (!initServer()) {
+        qDebug("Cannot init server");
+        return false;
+    }
+
+    return true;
 }
 
 bool AppManager::initView(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QGuiApplication app(argc, argv);
+    qmlRegisterType<QMLInterface>("com.myapp", 1, 0, "QmlInterface");
 
     QQmlApplicationEngine engine;
     QQmlContext* ctxt = engine.rootContext();
@@ -55,4 +66,15 @@ bool AppManager::initData()
     QJsonArray jsonData = DataManager::getInstance()->convertTextToJson(textData);
     DataManager::getInstance()->convertDataToModel(jsonData, m_appModel);
     return true;
+}
+
+bool AppManager::initServer()
+{
+    MsgQueue::getInstance()->initMsgQueue();
+    return true;
+}
+
+void AppManager::requestTest()
+{
+    MsgQueue::getInstance()->sendingMsg();
 }

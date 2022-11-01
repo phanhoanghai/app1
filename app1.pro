@@ -9,9 +9,11 @@ CONFIG += c++11
 SOURCES += \
         data/employee.cpp \
         data/employeemodel.cpp \
+        interface/qmlinterface.cpp \
         main.cpp \
         manager/appmanager.cpp \
         manager/datamanager.cpp \
+        serverlistenner/msgqueue.cpp \
         serverlistenner/readsharemem.cpp
 
 RESOURCES += qml.qrc
@@ -32,8 +34,10 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     data/employee.h \
     data/employeemodel.h \
+    interface/qmlinterface.h \
     manager/appmanager.h \
     manager/datamanager.h \
+    serverlistenner/msgqueue.h \
     serverlistenner/readsharemem.h \
     util/AppDefine.h
 

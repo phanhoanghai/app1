@@ -3,6 +3,7 @@ import QtQuick.Controls 2.4
 import QtQuick.Controls.Material 2.4
 import QtQuick.Layouts 1.11
 import QtQuick.Window 2.11
+import com.myapp 1.0
 
 ApplicationWindow {
     id: window
@@ -10,6 +11,10 @@ ApplicationWindow {
     height: 590
     visible: true
     property int currentIndex: 0
+
+    QmlInterface {
+        id: qmlInterface
+    }
 
     ListModel {
         id: skillModel
@@ -97,6 +102,11 @@ ApplicationWindow {
             height: 40
             anchors.left: searchBar.right
             anchors.leftMargin: 20
+
+            onClicked: {
+                console.log("request st")
+                qmlInterface.test()
+            }
         }
     }
 
@@ -144,7 +154,6 @@ ApplicationWindow {
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                        console.log(index)
                         listEmployee.currentIndex = index
                         currentIndex = index
                     }
