@@ -9,6 +9,7 @@
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <mqueue.h>
+#include "../server/multiprocess/connection.h"
 
 class MsgQueue
 {
@@ -19,12 +20,12 @@ public:
     static MsgQueue* getInstance();
 
 public:
-    bool initMsgQueue();
+    void initMsgQueue();
     void listeningMsg();
     void sendingMsg();
 
 private:
-    char client_queue_name [64];
+    char* client_queue_name;
     mqd_t qd_server, qd_client;
     struct mq_attr attr;
 };

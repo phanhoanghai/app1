@@ -32,6 +32,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
+    ../server/multiprocess/connection.h \
     data/employee.h \
     data/employeemodel.h \
     interface/qmlinterface.h \

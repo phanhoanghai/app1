@@ -26,21 +26,8 @@ AppManager *AppManager::getInstance()
 
 bool AppManager::initApp(int argc, char *argv[])
 {
-    if (!initData()) {
-        qDebug("Cannot init the data");
-        return false;
-    }
-
-    if (!initView(argc, argv)) {
-        qDebug("Cannot init the view");
-        return false;
-    }
-
-    if (!initServer()) {
-        qDebug("Cannot init server");
-        return false;
-    }
-
+    initData();
+    initView(argc, argv);
     return true;
 }
 
