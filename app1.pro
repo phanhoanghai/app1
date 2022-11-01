@@ -40,6 +40,7 @@ HEADERS += \
     manager/datamanager.h \
     serverlistenner/msgqueue.h \
     serverlistenner/readsharemem.h \
-    util/AppDefine.h
+    util/AppDefine.h \
+    util/MsgHelper.h
 
 DISTFILES +=

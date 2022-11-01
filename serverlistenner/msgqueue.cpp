@@ -7,8 +7,13 @@
 #include "../server/multiprocess/connection.h"
 
 using namespace std;
+using namespace app_msg;
 
 static MsgQueue* m_instance;
+
+char client_queue_name [64] = CLIENT1_QUEUE_NAME;
+mqd_t qd_server, qd_client;
+struct mq_attr attr;
 
 MsgQueue::MsgQueue()
 {
@@ -28,15 +33,14 @@ MsgQueue *MsgQueue::getInstance()
 
 void MsgQueue::initMsgQueue()
 {
-    //    static bool isAlreadyInit = false;
+    static bool isAlreadyInit = false;
 
-    //    if (!isAlreadyInit) {
-    //        isAlreadyInit = true;
-    //    } else {
-    //        return;
-    //    }
+    if (!isAlreadyInit) {
+        isAlreadyInit = true;
+    } else {
+        return;
+    }
 
-    sprintf (client_queue_name, "/sp-example-client-%d", getpid ());
     qDebug("hai phan %s", client_queue_name);
 
     if ((qd_client = mq_open (client_queue_name, O_RDONLY | O_CREAT, QUEUE_PERMISSIONS, &attr)) == -1) {
@@ -55,30 +59,28 @@ void MsgQueue::initMsgQueue()
 
 void MsgQueue::listeningMsg()
 {
-
+    Msg msg;
+    while (1) {
+        if (mq_receive (qd_client, (char*)& msg, MAX_MSG_SIZE, NULL) == -1) {
+            perror ("Client: mq_receive");
+            exit (1);
+        }
+        qDebug() << "Client1: message received : " << msg.msgType;
+    }
 }
 
-void MsgQueue::sendingMsg()
+void MsgQueue::sendingMsg(Msg msg)
 {
     initMsgQueue();
     qDebug("hai phan : %s", client_queue_name);
 
-    char in_buffer [MSG_BUFFER_SIZE];
-    char temp_buf [10];
-
-    while (fgets (temp_buf, 2, stdin)) {
-        if (mq_send (qd_server, client_queue_name, strlen (client_queue_name) + 1, 0) == -1) {
-            perror ("Client: Not able to send message to server");
-            continue;
-        }
-
-        if (mq_receive (qd_client, in_buffer, MSG_BUFFER_SIZE, NULL) == -1) {
-            perror ("Client: mq_receive");
-            exit (1);
-        }
+    if (mq_send (qd_server, (char *) &msg, sizeof(msg), 0) == -1) {
+        perror ("Client: Not able to send message to server");
     }
+}
 
-
+void MsgQueue::closeMsgQueue()
+{
     if (mq_close (qd_client) == -1) {
         perror ("Client: mq_close");
         exit (1);
@@ -88,5 +90,4 @@ void MsgQueue::sendingMsg()
         perror ("Client: mq_unlink");
         exit (1);
     }
-    printf ("<Client> Quitting...\n");
 }

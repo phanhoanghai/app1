@@ -1,13 +1,13 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
-
 #include "appmanager.h"
 #include "data/employeemodel.h"
 #include "serverlistenner/readsharemem.h"
 #include "manager/datamanager.h"
 #include "serverlistenner/msgqueue.h"
 #include "interface/qmlinterface.h"
+#include "util/MsgHelper.h"
 
 using namespace std;
 static AppManager* m_instance;
@@ -63,5 +63,5 @@ bool AppManager::initServer()
 
 void AppManager::requestTest()
 {
-    MsgQueue::getInstance()->sendingMsg();
+    MsgQueue::getInstance()->sendingMsg(messagere_refresh());
 }

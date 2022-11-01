@@ -6,6 +6,7 @@
 class Employee
 {
 public:
+    Employee() = default;
     Employee(const int index, const QString& name,
              const float average, const int assem,
              const int c_plus, const int js,

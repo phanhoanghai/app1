@@ -10,6 +10,7 @@
 #include <sys/stat.h>
 #include <mqueue.h>
 #include "../server/multiprocess/connection.h"
+#include "../server/multiprocess/message.h"
 
 class MsgQueue
 {
@@ -22,12 +23,10 @@ public:
 public:
     void initMsgQueue();
     void listeningMsg();
-    void sendingMsg();
+    void sendingMsg(app_msg::Msg msg);
+    void closeMsgQueue();
 
 private:
-    char* client_queue_name;
-    mqd_t qd_server, qd_client;
-    struct mq_attr attr;
 };
 
 #endif // MSGQUEUE_H
