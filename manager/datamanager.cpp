@@ -59,7 +59,7 @@ void DataManager::convertDataToModel(QJsonArray& data, EmployeeModel& model)
         int cplus = obj["cplus"].toInt();
         int js = obj["js"].toInt();
         int qml = obj["qml"].toInt();
-        int openGL = obj["name"].toInt();
+        int openGL = obj["openGL"].toInt();
         float average = ((float)assem + (float)cplus + (float)js + (float)qml + (float)openGL) / 5.0f;
         model.addEmployee(Employee(index, name.toStdString().c_str(), average, assem, cplus, js, qml, openGL));
     }

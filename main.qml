@@ -137,7 +137,23 @@ ApplicationWindow {
             height: 250
             clip: true
             model: myModel
-            delegate: EmpoyeeDelegate {}
+            delegate: EmpoyeeDelegate {
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        console.log(index)
+                        listEmployee.currentIndex = index
+                        currentIndex = index
+                    }
+                }
+            }
+            highlight: Rectangle
+            {
+                color:"#eab676"
+                radius: 5
+                opacity: 0.7
+                focus: true
+            }
         }
     }
 

@@ -26,12 +26,10 @@ std::string ReadShareMem::getSharemem()
     int shm_fd;
     void* ptr = NULL;
 
-    qDebug("hai");
-
     shm_fd = shm_open("app_data", O_RDONLY, 0666);
     ptr = mmap(0, 4096, PROT_READ, MAP_SHARED, shm_fd, 0);
     m_stringData = (char*)ptr;
-    qDebug("hai1");
+
 //    qDebug("%s", (char*)ptr);
 //    shm_unlink("lg_dcv");
 

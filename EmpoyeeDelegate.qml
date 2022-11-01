@@ -5,7 +5,7 @@ import QtQuick.Layouts 1.11
 
 ItemDelegate {
     id: root
-    width: parent.width
+    width: 300
     height: 30
     checkable: true
 
@@ -25,6 +25,7 @@ ItemDelegate {
         */
         text: model.average.toFixed(1)
         x: 260
-        color: "#3BC029"
+        font.bold: true
+        color: "#1787b7"
     }
 }
