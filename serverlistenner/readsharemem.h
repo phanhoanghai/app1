@@ -19,6 +19,9 @@ private:
 public:
     static ReadShareMem* getInstance();
     std::string getSharemem();
+
+private:
+    std::string m_stringData;
 };
 
 #endif // READSHAREMEM_H

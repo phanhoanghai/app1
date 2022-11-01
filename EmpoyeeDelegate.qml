@@ -13,15 +13,18 @@ ItemDelegate {
         id: timeLabel
         font.pixelSize: Qt.application.font.pixelSize
         text: model.name
-        x: 50
+        x: 0
         Layout.leftMargin: 50
     }
 
     Label {
         id: dateLabel
         font.pixelSize: Qt.application.font.pixelSize
-        text: model.average
-        x: 310
+        /*
+          3.14159265359 -> 3.1
+        */
+        text: model.average.toFixed(1)
+        x: 260
         color: "#3BC029"
     }
 }

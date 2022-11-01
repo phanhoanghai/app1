@@ -7,14 +7,14 @@ class Employee
 {
 public:
     Employee(const int index, const QString& name,
-             const QString& average, const int assem,
+             const float average, const int assem,
              const int c_plus, const int js,
              const int qml, const int openGL);
 
 public:
     int index() const;
     QString name() const;
-    QString average() const;
+    float average() const;
     int assem() const;
     int c_plus() const;
     int js() const;
@@ -24,7 +24,7 @@ public:
 private:
     int m_index;
     QString m_name;
-    QString m_average;
+    float m_average;
     int m_assem;
     int m_c_plus;
     int m_js;

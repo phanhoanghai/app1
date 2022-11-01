@@ -7,7 +7,7 @@ import QtQuick.Window 2.11
 ApplicationWindow {
     id: window
     width: 400
-    height: 550
+    height: 590
     visible: true
     property int currentIndex: 0
 
@@ -132,9 +132,10 @@ ApplicationWindow {
         ListView {
             id: listEmployee
             anchors.top: listLabel.bottom
+            x: 50
             width: parent.width
-            height: 320
-            anchors.horizontalCenter: parent.horizontalCenter
+            height: 250
+            clip: true
             model: myModel
             delegate: EmpoyeeDelegate {}
         }

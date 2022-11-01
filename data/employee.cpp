@@ -1,7 +1,7 @@
 #include "employee.h"
 
 Employee::Employee(const int index, const QString& name,
-                   const QString& average, const int assem,
+                   const float average, const int assem,
                    const int c_plus, const int js,
                    const int qml, const int openGL)
      :m_index(index) ,m_name(name), m_average(average),
@@ -18,7 +18,7 @@ QString Employee::name() const {
     return m_name;
 }
 
-QString Employee::average() const {
+float Employee::average() const {
     return m_average;
 }
 

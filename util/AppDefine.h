@@ -4,6 +4,10 @@
 #ifndef COMMON_H_
 #define COMMON_H_
 
+#include <string>
+
+const std::string json_defined_datas[7] = {"index", "name", "assem", "cplus", "js", "qml", "openGL"};
+
 #define QUEUE_NAME  "/test_queue"
 #define MAX_SIZE    1024
 #define MSG_STOP    "exit"
@@ -17,6 +21,7 @@
         } \
     } while (0) \
 
+#define ROUNDF(f, c) (((float)((int)((f) * (c))) / (c)))
 
 #endif /* #ifndef COMMON_H_ */
 

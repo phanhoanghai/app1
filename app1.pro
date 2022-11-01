@@ -10,6 +10,8 @@ SOURCES += \
         data/employee.cpp \
         data/employeemodel.cpp \
         main.cpp \
+        manager/appmanager.cpp \
+        manager/datamanager.cpp \
         serverlistenner/readsharemem.cpp
 
 RESOURCES += qml.qrc
@@ -30,6 +32,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     data/employee.h \
     data/employeemodel.h \
+    manager/appmanager.h \
+    manager/datamanager.h \
     serverlistenner/readsharemem.h \
     util/AppDefine.h
 

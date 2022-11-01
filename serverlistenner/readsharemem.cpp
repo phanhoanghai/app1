@@ -1,5 +1,5 @@
 #include "readsharemem.h"
-#include <iostream>
+#include <QDebug>
 #include <sys/ipc.h>
 #include <sys/shm.h>
 #include <stdio.h>
@@ -23,16 +23,17 @@ ReadShareMem *ReadShareMem::getInstance()
 
 std::string ReadShareMem::getSharemem()
 {
-    key_t key = ftok("data",65);
+    int shm_fd;
+    void* ptr = NULL;
 
-    int shmid = shmget(key, 1024, 0666|IPC_CREAT);
+    qDebug("hai");
 
-    char* str = (char*) shmat(shmid,(void*)0,0);
+    shm_fd = shm_open("app_data", O_RDONLY, 0666);
+    ptr = mmap(0, 4096, PROT_READ, MAP_SHARED, shm_fd, 0);
+    m_stringData = (char*)ptr;
+    qDebug("hai1");
+//    qDebug("%s", (char*)ptr);
+//    shm_unlink("lg_dcv");
 
-    printf("Data read from memory: %s\n",str);
-
-    shmdt(str);
-    shmctl(shmid,IPC_RMID,NULL);
-
-    return 0;
+    return (char*)ptr;
 }
