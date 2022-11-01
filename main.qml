@@ -136,6 +136,9 @@ ApplicationWindow {
             width: parent.width
             height: 250
             clip: true
+            ScrollBar.vertical: ScrollBar {
+                active: true
+            }
             model: myModel
             delegate: EmpoyeeDelegate {
                 MouseArea {
